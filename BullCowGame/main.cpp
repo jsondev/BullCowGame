@@ -8,13 +8,17 @@ void PlayGame();
 string GetGuess();
 void PrintBackGuess(string Guess);
 void RemainingGuesses(int remainingGuesses);
+bool AskToPlayAgain();
 
 // entry point for the application
 int main()
 {
-
 	PrintIntro();
-	PlayGame();
+	
+	do {
+		PlayGame();
+	} while (AskToPlayAgain());
+	
 	return 0;
 }
 
@@ -58,4 +62,18 @@ void RemainingGuesses(int remainingGuesses) {
 	cout << "You have " << remainingGuesses << " left \n";
 	cout << endl;
 	return;
+}
+
+bool AskToPlayAgain() {
+	cout << "Do you want to play again?";
+	string Response = "";
+	getline(cin, Response);
+	if (Response[0] == 'y' || Response[0] == 'Y') {
+		cout << "You want to play again!";
+		return true;
+	}
+	else {
+		cout << "You don't want to play again :-(" ;
+		return false;
+	}
 }
