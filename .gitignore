@@ -3,5 +3,5 @@
 ################################################################################
 
 /.vs/BullCowGame/v15
-/Debug
-/BullCowGame/Debug
+Debug/
+BullCowGame/Debug/
