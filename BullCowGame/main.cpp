@@ -4,17 +4,20 @@
 using namespace std;
 
 void PrintIntro();
-string GetGuessAndPrintBack();
+string GetGuessAndPrintBack(int remainingGuesses);
 
 // entry point for the application
 int main() 
 {
+	
 	PrintIntro();
-	GetGuessAndPrintBack();
+	constexpr int TOTAL_GUESSES = 5;
+	for(int i = 0; i <= TOTAL_GUESSES; i++)
+	{
+		int remainingGuesses = TOTAL_GUESSES - i;
+	GetGuessAndPrintBack(remainingGuesses);
+	};
 
-	
-	
-	
 
 	return 0;
 }
@@ -29,7 +32,7 @@ void PrintIntro() {
 	return;
 }
 
-string GetGuessAndPrintBack() {
+string GetGuessAndPrintBack(int remainingGuesses) {
 	// get a guess from the player
 	cout << "What is your guess?? \n";
 	string Guess = "";
@@ -37,6 +40,9 @@ string GetGuessAndPrintBack() {
 
 	// repeat the guess back to them
 	cout << "You've guessed " << Guess;
+	cout << endl;
+	cout << "You have " << remainingGuesses << " left \n";
+	cout << endl;
 
 	return Guess;
 }
