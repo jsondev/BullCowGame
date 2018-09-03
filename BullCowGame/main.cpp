@@ -7,15 +7,15 @@ void PrintIntro();
 string GetGuessAndPrintBack(int remainingGuesses);
 
 // entry point for the application
-int main() 
+int main()
 {
-	
+
 	PrintIntro();
 	constexpr int TOTAL_GUESSES = 5;
-	for(int i = 0; i <= TOTAL_GUESSES; i++)
+	for (int i = 0; i <= TOTAL_GUESSES; i++)
 	{
 		int remainingGuesses = TOTAL_GUESSES - i;
-	GetGuessAndPrintBack(remainingGuesses);
+		GetGuessAndPrintBack(remainingGuesses);
 	};
 
 
@@ -41,6 +41,7 @@ string GetGuessAndPrintBack(int remainingGuesses) {
 	// repeat the guess back to them
 	cout << "You've guessed " << Guess;
 	cout << endl;
+	// tells player how many guesses they have left
 	cout << "You have " << remainingGuesses << " left \n";
 	cout << endl;
 
