@@ -1,12 +1,10 @@
 #include <iostream>;
 #include <string>;
 
-using namespace std;
-
 void PrintIntro();
 void PlayGame();
-string GetGuess();
-void PrintBackGuess(string Guess);
+std::string GetGuess();
+void PrintBackGuess(std::string Guess);
 void RemainingGuesses(int remainingGuesses);
 bool AskToPlayAgain();
 
@@ -25,17 +23,17 @@ int main()
 void PrintIntro() {
 	// introduce the game
 	constexpr int WORLD_LENGTH = 5;
-	cout << "Welcome to Bulls and Cows!!" << endl;
-	cout << "Can you guess the " << WORLD_LENGTH << endl;
-	cout << "letter isogram I'm thinking of? \n";
-	cout << endl;
+	std::cout << "Welcome to Bulls and Cows!!" << std::endl;
+	std::cout << "Can you guess the " << WORLD_LENGTH << std::endl;
+	std::cout << "letter isogram I'm thinking of? \n";
+	std::cout << std::endl;
 	return;
 }
 void PlayGame() {
 	constexpr int TOTAL_GUESSES = 5;
 	for (int i = 0; i <= TOTAL_GUESSES; i++)
 	{
-		string Guess = GetGuess();
+		std::string Guess = GetGuess();
 		PrintBackGuess(Guess);
 		int remainingGuesses = TOTAL_GUESSES - i;
 		RemainingGuesses(remainingGuesses);
@@ -43,38 +41,38 @@ void PlayGame() {
 	return;
 }
 
-string GetGuess() {
+std::string GetGuess() {
 	// get a guess from the player
-	cout << "What is your guess?? \n";
-	string Guess;
-	getline(cin, Guess);
+	std::cout << "What is your guess?? \n";
+	std::string Guess;
+	getline(std::cin, Guess);
 	return Guess;
 }
 
-void PrintBackGuess(string Guess) {
+void PrintBackGuess(std::string Guess) {
 	// repeat the guess back to them
-	cout << "You've guessed " << Guess;
-	cout << endl;
+	std::cout << "You've guessed " << Guess;
+	std::cout << std::endl;
 	return;
 }
 void RemainingGuesses(int remainingGuesses) {
 	// tells player how many guesses they have left
-	cout << "You have " << remainingGuesses << " left \n";
-	cout << endl;
+	std::cout << "You have " << remainingGuesses << " left \n";
+	std::cout << std::endl;
 	return;
 }
 
 bool AskToPlayAgain() {
-	cout << "Do you want to play again? (y/n) ";
-	string Response;
-	getline(cin, Response);
+	std::cout << "Do you want to play again? (y/n) ";
+	std::string Response;
+	getline(std::cin, Response);
 	if (Response[0] == 'y' || Response[0] == 'Y') {
-		cout << "You want to play again! :-) \n";
-		cout << endl;
+		std::cout << "You want to play again! :-) \n";
+		std::cout << std::endl;
 		return true;
 	}
 	else {
-		cout << "You don't want to play again :-( \n";
+		std::cout << "You don't want to play again :-( \n";
 		return false;
 	}
 }
