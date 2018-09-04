@@ -2,11 +2,11 @@
 #include <string>;
 #include "FBullCowGame.h";
 
-
+using FText = std::string;
 
 void PrintIntro();
 void PlayGame();
-std::string GetGuess();
+FText GetGuess();
 void RemainingGuesses(int remainingGuesses);
 bool AskToPlayAgain();
 FBullCowGame BCGame; // instantiate a new game
@@ -40,7 +40,7 @@ void PlayGame() {
 	// TODO change from FOR to WHILE loop once we are validating rules
 	for (int count = 0; count <= MaxTries; count++)
 	{
-		std::string Guess = GetGuess(); // TODO make check for valid guesses
+		FText Guess = GetGuess(); // TODO make check for valid guesses
 		// submit valid guess to game
 
 		// print number of bulls and cows
@@ -53,11 +53,11 @@ void PlayGame() {
 	return;
 }
 
-std::string GetGuess() {
+FText GetGuess() {
 	int CurrentTry = BCGame.GetCurrentTry();
 	// get a guess from the player
 	std::cout << "Try " << CurrentTry << ". Enter your guess: ";
-	std::string Guess;
+	FText Guess;
 	getline(std::cin, Guess);
 	return Guess;
 }
@@ -72,7 +72,7 @@ void RemainingGuesses(int remainingGuesses) {
 
 bool AskToPlayAgain() {
 	std::cout << "Do you want to play again? (y/n) ";
-	std::string Response;
+	FText Response;
 	getline(std::cin, Response);
 	if (Response[0] == 'y' || Response[0] == 'Y') {
 		std::cout << "You want to play again! :-) \n";
