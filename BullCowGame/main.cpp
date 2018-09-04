@@ -3,11 +3,12 @@
 #include "FBullCowGame.h";
 
 using FText = std::string;
+using int32 = int;
 
 void PrintIntro();
 void PlayGame();
 FText GetGuess();
-void RemainingGuesses(int remainingGuesses);
+void RemainingGuesses(int32 remainingGuesses);
 bool AskToPlayAgain();
 FBullCowGame BCGame; // instantiate a new game
 
@@ -26,7 +27,7 @@ int main()
 
 void PrintIntro() {
 	// introduce the game
-	constexpr int WORD_LENGTH = 5;
+	constexpr int32 WORD_LENGTH = 5;
 	std::cout << "Welcome to Bulls and Cows!!" << std::endl;
 	std::cout << "Can you guess the " << WORD_LENGTH << std::endl;
 	std::cout << "letter isogram I'm thinking of? \n";
@@ -35,17 +36,17 @@ void PrintIntro() {
 }
 void PlayGame() {
 	
-	int MaxTries = BCGame.GetMaxTries();
+	int32 MaxTries = BCGame.GetMaxTries();
 	// loop through the number of turns
 	// TODO change from FOR to WHILE loop once we are validating rules
-	for (int count = 0; count <= MaxTries; count++)
+	for (int32 count = 0; count <= MaxTries; count++)
 	{
 		FText Guess = GetGuess(); // TODO make check for valid guesses
 		// submit valid guess to game
 
 		// print number of bulls and cows
 		std::cout << "You've guessed " << Guess << std::endl;
-		int remainingGuesses = MaxTries - count;
+		int32 remainingGuesses = MaxTries - count;
 		RemainingGuesses(remainingGuesses);
 	};
 
@@ -54,7 +55,7 @@ void PlayGame() {
 }
 
 FText GetGuess() {
-	int CurrentTry = BCGame.GetCurrentTry();
+	int32 CurrentTry = BCGame.GetCurrentTry();
 	// get a guess from the player
 	std::cout << "Try " << CurrentTry << ". Enter your guess: ";
 	FText Guess;
@@ -63,7 +64,7 @@ FText GetGuess() {
 }
 
 
-void RemainingGuesses(int remainingGuesses) {
+void RemainingGuesses(int32 remainingGuesses) {
 	// tells player how many guesses they have left
 	std::cout << "You have " << remainingGuesses << " left \n";
 	std::cout << std::endl;
