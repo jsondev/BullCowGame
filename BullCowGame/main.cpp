@@ -1,60 +1,68 @@
 #include <iostream>;
 #include <string>;
+#include "FBullCowGame.h";
+
+
 
 void PrintIntro();
 void PlayGame();
 std::string GetGuess();
-void PrintBackGuess(std::string Guess);
 void RemainingGuesses(int remainingGuesses);
 bool AskToPlayAgain();
+FBullCowGame BCGame; // instantiate a new game
 
 // entry point for the application
 int main()
 {
-
+	bool bPlayAgain = false;
 	do {
 		PrintIntro();
 		PlayGame();
-	} while (AskToPlayAgain());
+		bPlayAgain = AskToPlayAgain();
+	} while (bPlayAgain);
 
 	return 0;
 }
 
 void PrintIntro() {
 	// introduce the game
-	constexpr int WORLD_LENGTH = 5;
+	constexpr int WORD_LENGTH = 5;
 	std::cout << "Welcome to Bulls and Cows!!" << std::endl;
-	std::cout << "Can you guess the " << WORLD_LENGTH << std::endl;
+	std::cout << "Can you guess the " << WORD_LENGTH << std::endl;
 	std::cout << "letter isogram I'm thinking of? \n";
 	std::cout << std::endl;
 	return;
 }
 void PlayGame() {
-	constexpr int TOTAL_GUESSES = 5;
-	for (int i = 0; i <= TOTAL_GUESSES; i++)
+	
+	int MaxTries = BCGame.GetMaxTries();
+	// loop through the number of turns
+	// TODO change from FOR to WHILE loop once we are validating rules
+	for (int count = 0; count <= MaxTries; count++)
 	{
-		std::string Guess = GetGuess();
-		PrintBackGuess(Guess);
-		int remainingGuesses = TOTAL_GUESSES - i;
+		std::string Guess = GetGuess(); // TODO make check for valid guesses
+		// submit valid guess to game
+
+		// print number of bulls and cows
+		std::cout << "You've guessed " << Guess << std::endl;
+		int remainingGuesses = MaxTries - count;
 		RemainingGuesses(remainingGuesses);
 	};
+
+	// TODO summarise game
 	return;
 }
 
 std::string GetGuess() {
+	int CurrentTry = BCGame.GetCurrentTry();
 	// get a guess from the player
-	std::cout << "What is your guess?? \n";
+	std::cout << "Try " << CurrentTry << ". Enter your guess: ";
 	std::string Guess;
 	getline(std::cin, Guess);
 	return Guess;
 }
 
-void PrintBackGuess(std::string Guess) {
-	// repeat the guess back to them
-	std::cout << "You've guessed " << Guess;
-	std::cout << std::endl;
-	return;
-}
+
 void RemainingGuesses(int remainingGuesses) {
 	// tells player how many guesses they have left
 	std::cout << "You have " << remainingGuesses << " left \n";
